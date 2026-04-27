@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+    <h1>🩵JOSE DAVID GUTIERREZ🩵</h1>
+
+    <!-- Botón hamburguesa -->
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+
+    <nav id="navMenu">
+        <ul>
+            <li><a href="#about">About me.</a></li>
+            <li><a href="#projects">My projects.</a></li>
+            <li><a href="#contacts">My contacts.</a></li>
+            <li><a href="pets.html">My pets.</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main>
+        <section class="about-me" id="about">
+            <h2>About me.</h2>
+
+            <p class="p-about" id="aboutText">
+                Hi, I'm a programming student, and I'm constantly learning new things. I really enjoy it.
+            </p>
+
+            <p class="p-about-feeling">Feeling: Excited</p>
+
+            <button id="changeTextBtn">Change text</button>
+        </section>
+
+        <section class="my-projects" id="projects">
+            <h2>My projects.</h2>
+
+            <div class="projects-grid">
+                <a class="project-card" href="https://github.com/gutierrezrretamozoj-beep/historia-de-usuario--inventario.git" target="_blank">
+                    Inventory project
+                </a>
+
+                <a class="project-card" href="https://github.com/guillermoleano/Sistema-de-Gesti-n-de-Pedidos-de-Clientes.git" target="_blank">
+                    Customer order management
+                </a>
+
+                <a class="project-card" href="#">
+                    This section is reserved for a future project.
+                </a>
+            </div>
+
+            <button id="toggleProjectsBtn">Show/Hide projects</button>
+        </section>
+
+        <section class="my-contacts" id="contacts">
+            <h2>My contacts.</h2>
+
+            <form>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" placeholder="Enter your name:" required>
+                <br><br>
+
+                <label for="email">Email</label><br>
+                <input type="email" id="email" placeholder="Enter your email:" required>
+                <br><br>
+
+                <label for="message">Message</label><br>
+                <textarea id="message" placeholder="Tell me whatever you want..."></textarea>
+                <br><br>
+
+                <button type="submit">📨Send me your message📨</button>
+            </form>
+        </section>
+
+        <footer>🩵© Designed by Jose Gutierrez🩵</footer>
+    </main>
+
+    <!-- LINK SCRIPT.JS -->
+    <script src="script.js"></script>
+</body>
+</html>

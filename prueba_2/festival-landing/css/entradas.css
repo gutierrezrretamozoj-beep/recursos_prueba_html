@@ -1,0 +1,587 @@
+/* ============================================================
+   FESTIVAL GASTRONÓMICO NOCTURNO — entradas.css
+   Descripción: Estilos para la página de compra de entradas.
+   Mantiene el mismo diseño dark/dorado del index principal.
+   ============================================================ */
+
+
+/* ============================================================
+   1. IMPORTACIÓN DE FUENTES
+   Mismas fuentes que el index para coherencia visual.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+/* ============================================================
+   2. VARIABLES GLOBALES
+   Paleta y tokens idénticos al style.css del index.
+   ============================================================ */
+:root {
+  --color-fondo:         #0a0a12;
+  --color-fondo-sec:     #111120;
+  --color-fondo-card:    #1a1a2e;
+  --color-acento:        #f0c000;
+  --color-acento-hover:  #ffd740;
+  --color-texto:         #ffffff;
+  --color-texto-suave:   #b0b0c8;
+  --color-borde:         #2a2a45;
+  --color-tabla-header:  #f0c000;
+  --color-tabla-fila1:   #1c1c35;
+  --color-tabla-fila2:   #141428;
+
+  /* Colores especiales por tipo de boleta */
+  --color-plata:         #8a9bb0;   /* Gris plateado */
+  --color-bronce:        #cd7f32;   /* Marrón bronce */
+  --color-oro:           #f0c000;   /* Dorado */
+  --color-lujo:          #c084fc;   /* Violeta/lila premium */
+
+  --fuente-titulo:       'Oswald', 'Impact', sans-serif;
+  --fuente-cuerpo:       'Montserrat', 'Segoe UI', sans-serif;
+  --radio-boton:         4px;
+}
+
+
+/* ============================================================
+   3. RESET Y BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  /* Fondo con textura sutil de puntos para dar profundidad */
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 192, 0, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ============================================================
+   4. HEADER
+   Mismo estilo que el index: fijo, fondo oscuro translúcido,
+   logo a la izquierda y botón "volver" a la derecha.
+   ============================================================ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background-color: rgba(5, 5, 15, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-borde);
+}
+
+/* Logo del festival */
+header img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Botón "volver al inicio" */
+header nav button {
+  background-color: transparent;
+  color: var(--color-texto-suave);
+  border: 1px solid var(--color-borde);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: var(--radio-boton);
+  cursor: pointer;
+  transition: color 0.25s ease,
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              transform 0.2s ease;
+  /* Flecha decorativa antes del texto */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Flecha ← antes del texto del botón */
+header nav button::before {
+  content: '←';
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+}
+
+header nav button:hover {
+  color: var(--color-acento);
+  border-color: var(--color-acento);
+  background-color: rgba(240, 192, 0, 0.07);
+  transform: translateY(-1px);
+}
+
+header nav button:hover::before {
+  transform: translateX(-3px); /* La flecha se mueve al hover */
+}
+
+
+/* ============================================================
+   5. MAIN — CONTENEDOR PRINCIPAL
+   Centra el contenido verticalmente y horizontalmente,
+   compensando el header fijo con padding-top.
+   ============================================================ */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 40px 60px;  /* padding-top = altura del header + espacio */
+}
+
+
+/* ============================================================
+   6. TÍTULO DE LA SECCIÓN
+   Se genera con un pseudo-elemento ::before en el main
+   para no modificar el HTML original.
+   ============================================================ */
+main::before {
+  content: 'COMPRA TU ENTRADA';
+  display: block;
+  font-family: var(--fuente-titulo);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-texto);
+  text-align: center;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+/* Línea dorada decorativa bajo el título */
+main::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-acento);
+  border-radius: 2px;
+  margin: 0 auto 48px;
+  order: -1;                   /* Va justo debajo del ::before */
+}
+
+/* Truco para que ::after aparezca después del ::before y antes de la tabla */
+main {
+  position: relative;
+}
+
+
+/* ============================================================
+   7. TABLA DE ENTRADAS
+   Diseño premium: encabezado dorado, filas con color
+   de acento según el tipo de boleta, botones de compra
+   con hover llamativo.
+   ============================================================ */
+
+/* Wrapper scroll para responsividad */
+.tabla-gastronomica {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6),
+              0 0 0 1px var(--color-borde); /* Borde exterior */
+}
+
+/* --- ENCABEZADO (thead) --- */
+
+.tabla-gastronomica thead tr {
+  background-color: var(--color-tabla-header);
+}
+
+.tabla-gastronomica thead th {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+/* Primera columna del encabezado — alineada a la izquierda */
+.tabla-gastronomica thead th:first-child {
+  text-align: left;
+  padding-left: 32px;
+}
+
+/* --- FILAS DEL CUERPO (tbody) --- */
+
+.tabla-gastronomica tbody tr {
+  border-bottom: 1px solid var(--color-borde);
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  position: relative;
+}
+
+/* Filas alternas */
+.tabla-gastronomica tbody tr:nth-child(odd) {
+  background-color: var(--color-tabla-fila1);
+}
+
+.tabla-gastronomica tbody tr:nth-child(even) {
+  background-color: var(--color-tabla-fila2);
+}
+
+/* Hover en filas */
+.tabla-gastronomica tbody tr:hover {
+  background-color: #1e1e38;
+}
+
+/* Última fila sin borde inferior */
+.tabla-gastronomica tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* --- CELDAS DE DATOS (td) --- */
+
+.tabla-gastronomica tbody td {
+  padding: 20px 24px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--color-texto);
+  vertical-align: middle;
+}
+
+/* Primera columna — nombre del tipo de boleta */
+.tabla-gastronomica tbody td:first-child {
+  text-align: left;
+  padding-left: 32px;
+  font-family: var(--fuente-titulo);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* Barra de color a la izquierda según el tipo */
+  border-left: 4px solid transparent;
+}
+
+/* Barra lateral de color por tipo de boleta */
+.tabla-gastronomica tbody tr:nth-child(1) td:first-child {
+  border-left-color: var(--color-plata);
+  color: var(--color-plata);
+}
+
+.tabla-gastronomica tbody tr:nth-child(2) td:first-child {
+  border-left-color: var(--color-bronce);
+  color: var(--color-bronce);
+}
+
+.tabla-gastronomica tbody tr:nth-child(3) td:first-child {
+  border-left-color: var(--color-oro);
+  color: var(--color-oro);
+}
+
+.tabla-gastronomica tbody tr:nth-child(4) td:first-child {
+  border-left-color: var(--color-lujo);
+  color: var(--color-lujo);
+}
+
+/* Segunda columna — descripción */
+.tabla-gastronomica tbody td:nth-child(2) {
+  color: var(--color-texto-suave);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+/* Tercera columna — precio */
+.tabla-gastronomica tbody td:nth-child(3) {
+  font-family: var(--fuente-titulo);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  letter-spacing: 0.04em;
+}
+
+/* Cuarta columna — botón comprar */
+.tabla-gastronomica tbody td:nth-child(4) {
+  padding-right: 32px;
+}
+
+
+/* ============================================================
+   8. BOTÓN "COMPRAR"
+   Botón principal de acción con color según el tipo de boleta.
+   ============================================================ */
+
+.btn-comprar {
+  display: inline-block;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: var(--radio-boton);
+  cursor: pointer;
+  transition: transform 0.2s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease,
+              filter 0.25s ease;
+  white-space: nowrap;
+}
+
+/* Color de cada botón según el tipo de boleta */
+
+/* PLATA — gris plateado */
+tr:nth-child(1) .btn-comprar {
+  background-color: var(--color-plata);
+  color: #0a0a12;
+  box-shadow: 0 4px 14px rgba(138, 155, 176, 0.3);
+}
+
+tr:nth-child(1) .btn-comprar:hover {
+  background-color: #a8bcd0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(138, 155, 176, 0.5);
+}
+
+/* BRONCE — marrón bronce */
+tr:nth-child(2) .btn-comprar {
+  background-color: var(--color-bronce);
+  color: #0a0a12;
+  box-shadow: 0 4px 14px rgba(205, 127, 50, 0.3);
+}
+
+tr:nth-child(2) .btn-comprar:hover {
+  background-color: #e09040;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(205, 127, 50, 0.5);
+}
+
+/* ORO — dorado */
+tr:nth-child(3) .btn-comprar {
+  background-color: var(--color-oro);
+  color: #0a0a12;
+  box-shadow: 0 4px 14px rgba(240, 192, 0, 0.3);
+}
+
+tr:nth-child(3) .btn-comprar:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(240, 192, 0, 0.55);
+}
+
+/* DE LUJO — violeta premium */
+tr:nth-child(4) .btn-comprar {
+  background-color: var(--color-lujo);
+  color: #0a0a12;
+  box-shadow: 0 4px 14px rgba(192, 132, 252, 0.3);
+}
+
+tr:nth-child(4) .btn-comprar:hover {
+  background-color: #d8a4ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(192, 132, 252, 0.55);
+}
+
+
+/* ============================================================
+   9. BADGES DECORATIVOS DE TIPO DE BOLETA
+   Pequeño ícono/badge al lado del nombre para cada tier.
+   Se agrega con ::before en el primer td de cada fila.
+   ============================================================ */
+
+/* Símbolo decorativo antes del nombre de la boleta */
+.tabla-gastronomica tbody tr:nth-child(1) td:first-child::before {
+  content: '✦ ';             /* Estrella plateada */
+  color: var(--color-plata);
+  font-size: 0.7rem;
+}
+
+.tabla-gastronomica tbody tr:nth-child(2) td:first-child::before {
+  content: '✦ ';
+  color: var(--color-bronce);
+  font-size: 0.7rem;
+}
+
+.tabla-gastronomica tbody tr:nth-child(3) td:first-child::before {
+  content: '✦ ';
+  color: var(--color-oro);
+  font-size: 0.7rem;
+}
+
+.tabla-gastronomica tbody tr:nth-child(4) td:first-child::before {
+  content: '♛ ';             /* Corona para la entrada de lujo */
+  color: var(--color-lujo);
+  font-size: 0.85rem;
+}
+
+
+/* ============================================================
+   10. NOTA INFORMATIVA DEBAJO DE LA TABLA
+   Texto pequeño con información adicional.
+   ============================================================ */
+main .nota-entradas {
+  margin-top: 24px;
+  font-size: 0.78rem;
+  color: #44445a;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+
+/* ============================================================
+   11. RESPONSIVE — TABLET (< 991px)
+   ============================================================ */
+@media (max-width: 991px) {
+
+  header {
+    padding: 12px 24px;
+  }
+
+  main {
+    padding: 100px 24px 50px;
+  }
+
+  .tabla-gastronomica tbody td {
+    padding: 16px 16px;
+    font-size: 0.88rem;
+  }
+
+  .tabla-gastronomica tbody td:first-child {
+    padding-left: 20px;
+  }
+
+  .tabla-gastronomica thead th {
+    padding: 14px 16px;
+  }
+
+  .tabla-gastronomica thead th:first-child {
+    padding-left: 20px;
+  }
+}
+
+
+/* ============================================================
+   12. RESPONSIVE — MÓVIL (< 767px)
+   En móvil la tabla hace scroll horizontal para no romper
+   el layout. El header se adapta.
+   ============================================================ */
+@media (max-width: 767px) {
+
+  header {
+    padding: 10px 20px;
+  }
+
+  header img {
+    height: 42px;
+  }
+
+  header nav button {
+    font-size: 0.7rem;
+    padding: 7px 14px;
+    letter-spacing: 0.08em;
+  }
+
+  main {
+    padding: 90px 16px 40px;
+    align-items: stretch;      /* Ocupa todo el ancho */
+  }
+
+  /* Wrapper de scroll horizontal para la tabla */
+  .tabla-gastronomica {
+    min-width: 580px;          /* Evita que se comprima demasiado */
+    font-size: 0.85rem;
+  }
+
+  /* Contenedor scroll — se aplica al main que tiene overflow:auto */
+  main {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Celdas más compactas en mobile */
+  .tabla-gastronomica tbody td,
+  .tabla-gastronomica thead th {
+    padding: 14px 14px;
+  }
+
+  .tabla-gastronomica tbody td:first-child,
+  .tabla-gastronomica thead th:first-child {
+    padding-left: 16px;
+  }
+
+  .tabla-gastronomica tbody td:last-child {
+    padding-right: 16px;
+  }
+
+  /* Precio más compacto */
+  .tabla-gastronomica tbody td:nth-child(3) {
+    font-size: 1rem;
+  }
+
+  /* Botón comprar más pequeño */
+  .btn-comprar {
+    padding: 8px 14px;
+    font-size: 0.72rem;
+  }
+}
+
+
+/* ============================================================
+   13. RESPONSIVE — MÓVIL PEQUEÑO (< 480px)
+   ============================================================ */
+@media (max-width: 479px) {
+
+  header img {
+    height: 36px;
+  }
+
+  /* Solo muestra texto corto en el botón "volver" */
+  header nav button {
+    font-size: 0.68rem;
+    padding: 6px 12px;
+    gap: 4px;
+  }
+
+  main::before {
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+
+/* ============================================================
+   FIN DEL ARCHIVO entradas.css
+   Festival Gastronómico Nocturno — "Sabores de la Noche"
+   ============================================================ */

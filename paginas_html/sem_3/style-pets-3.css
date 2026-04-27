@@ -1,0 +1,148 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+:root{
+    --color-text: #ffffff;
+    --color-bg: #84b7f5;
+    --color-card: #1e293b;
+    --color-dark: #0f172a;
+    --border-color: whitesmoke;
+
+    --font-main: Arial, sans-serif;
+}
+
+/* BODY */
+body{
+    background-color: var(--color-bg);
+    font-family: var(--font-main);
+    padding: 1rem;
+}
+
+/* HEADER */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card);
+    padding: 1.2rem 2rem;
+    border-radius: 1.2rem;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 15px var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+header h1{
+    color: var(--color-text);
+    font-size: 1.8rem;
+}
+
+/* BUTTON */
+button{
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.8rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--color-dark);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #334155;
+}
+
+/* MAIN GRID */
+main{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/* TITLE */
+#MEET-MY-BABIES{
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-text);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* CARD */
+.pet-card{
+    background-color: var(--color-card);
+    border: 2px solid var(--border-color);
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 0 15px var(--border-color);
+    transition: 0.3s;
+}
+
+.pet-card:hover{
+    transform: scale(1.05);
+}
+
+/* IMAGES RESPONSIVE */
+.pet-card img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* TEXT */
+.pet-card h3{
+    color: #84b7f5;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.pet-card p{
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+/* FOOTER */
+footer{
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-text);
+    padding: 1rem;
+}
+
+/* ---------------- MEDIA QUERIES ---------------- */
+
+/* MOBILE (2 columns) */
+@media (max-width: 600px){
+
+    header{
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    main{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* TABLET (3 columns) */
+@media (min-width: 601px) and (max-width: 1024px){
+
+    main{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* DESKTOP (4 columns) */
+@media (min-width: 1025px){
+
+    main{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
