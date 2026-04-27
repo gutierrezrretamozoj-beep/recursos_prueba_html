@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGE TITLE</title>
+    <!-- Google Fonts (opcional) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="02-style-referencia.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER — logo/nombre + navegación
+    ========================================== -->
+    <header>
+        <h1>SITE NAME</h1>
+
+        <!-- Botón hamburguesa solo visible en mobile -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+
+        <nav id="navMenu" aria-label="Main navigation">
+            <ul>
+                <li><a href="#about">About me.</a></li>
+                <li><a href="#projects">My projects.</a></li>
+                <li><a href="#contacts">Contact.</a></li>
+                <!-- Para enlazar otra página: -->
+                <li><a href="other-page.html">Other page.</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- =========================================
+         MAIN — contenido principal
+    ========================================== -->
+    <main>
+
+        <!-- SECCIÓN 1: About -->
+        <section id="about" class="about-me">
+            <h2>About me.</h2>
+            <p>Description here.</p>
+            <!-- Botón para JS -->
+            <button id="changeTextBtn">Change text</button>
+        </section>
+
+        <!-- SECCIÓN 2: Projects -->
+        <section id="projects" class="my-projects">
+            <h2>My projects.</h2>
+
+            <!-- Grid de tarjetas de proyectos -->
+            <div class="projects-grid">
+                <a class="project-card" href="https://github.com/" target="_blank">
+                    Project name
+                </a>
+                <a class="project-card" href="#">
+                    Future project (coming soon)
+                </a>
+            </div>
+
+            <button id="toggleProjectsBtn">Show / Hide projects</button>
+        </section>
+
+        <!-- SECCIÓN 3: Contact form -->
+        <section id="contacts" class="my-contacts">
+            <h2>Contact me.</h2>
+
+            <!--
+                FORMULARIO SEMÁNTICO
+                - <label for="id"> siempre enlazado al input correcto
+                - required = validación nativa del navegador
+                - type correcto en cada input
+            -->
+            <form id="contactForm">
+
+                <label for="name">Name</label>
+                <input type="text"  id="name"    placeholder="Enter your name:"    required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email"   placeholder="Enter your email:"   required>
+
+                <label for="message">Message</label>
+                <textarea           id="message" placeholder="Write your message..." rows="4"></textarea>
+
+                <button type="submit">📨 Send message</button>
+            </form>
+
+            <!-- Mensaje de éxito (oculto por defecto, JS lo muestra) -->
+            <p id="successMsg" class="hidden">✅ Message sent! Thanks.</p>
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         FOOTER — fuera de <main>, dentro de <body>
+    ========================================== -->
+    <footer>
+        <p>© 2026 — Designed by <strong>Your Name</strong></p>
+    </footer>
+
+    <!-- Script al final del body para que el DOM ya esté cargado -->
+    <script src="03-script-referencia.js"></script>
+
+</body>
+</html>
+
+<!--
+    ╔══════════════════════════════════════════════╗
+    ║   RECORDATORIO DE SEMÁNTICA HTML             ║
+    ╠══════════════════════════════════════════════╣
+    ║  <header>   → cabecera de página o sección   ║
+    ║  <nav>      → menú de navegación             ║
+    ║  <main>     → contenido principal (1 solo)   ║
+    ║  <section>  → sección temática con <h2>      ║
+    ║  <article>  → contenido independiente        ║
+    ║  <aside>    → contenido secundario           ║
+    ║  <footer>   → pie de página                  ║
+    ║  <h1>       → solo 1 por página              ║
+    ║  <h2>–<h6> → jerarquía en orden             ║
+    ║  <label>    → siempre con for="input-id"     ║
+    ╚══════════════════════════════════════════════╝
+-->

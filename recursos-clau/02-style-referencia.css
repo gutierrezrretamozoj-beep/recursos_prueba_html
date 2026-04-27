@@ -1,0 +1,441 @@
+/* ================================================
+   ARCHIVO: style.css
+   RECURSO DE REFERENCIA — Junior Developer
+   Basado en tu estilo: dark cards + glow + blue
+   ================================================ */
+
+
+/* ─────────────────────────────────────────────
+   1. RESET GENERAL
+   Elimina márgenes y padding por defecto del navegador.
+   box-sizing: border-box → el padding NO agranda el elemento.
+───────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. VARIABLES CSS (:root)
+   Se usan como var(--nombre-variable) en todo el archivo.
+   Cambiar aquí = cambia en TODO el sitio.
+───────────────────────────────────────────── */
+:root {
+    /* Colores */
+    --color-bg:      #84b7f5;   /* fondo general (azul claro) */
+    --color-dark:    #0f172a;   /* header/footer (azul noche) */
+    --color-card:    #1e293b;   /* tarjetas (azul pizarra) */
+    --color-text:    #f1f5f9;   /* texto principal (blanco suave) */
+    --color-muted:   #cbd5e1;   /* texto secundario (gris claro) */
+    --color-accent:  #84b7f5;   /* acento/links (azul) */
+    --border-color:  whitesmoke;
+
+    /* Tipografía */
+    --font-main: Arial, sans-serif;
+    /* Si usas Google Fonts: --font-main: 'Poppins', sans-serif; */
+
+    /* Espaciado */
+    --gap:    1.5rem;
+    --radius: 1.2rem;
+
+    /* Sombra glow (tu firma visual) */
+    --glow: 0 0 15px var(--border-color);
+    --glow-hover: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+
+/* ─────────────────────────────────────────────
+   3. BODY
+───────────────────────────────────────────── */
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 1rem;
+    min-height: 100vh;  /* ocupa al menos la pantalla completa */
+}
+
+
+/* ─────────────────────────────────────────────
+   4. HEADER — Flexbox horizontal
+   justify-content: space-between → elementos en extremos
+   align-items: center → centrado vertical
+───────────────────────────────────────────── */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--color-dark);
+    padding: 1.2rem 2rem;
+    border-radius: var(--radius);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--glow);
+    margin-bottom: var(--gap);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+}
+
+
+/* ─────────────────────────────────────────────
+   5. NAVEGACIÓN
+───────────────────────────────────────────── */
+nav ul {
+    list-style: none;   /* elimina viñetas */
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;    /* si no caben, pasan a la siguiente línea */
+}
+
+nav ul a {
+    text-decoration: none;
+    color: var(--color-text);
+    background-color: var(--color-card);
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.8rem;
+    border: 2px solid var(--border-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+nav ul a:hover {
+    background-color: #334155;
+    box-shadow: var(--glow);
+}
+
+/* Botón hamburguesa (oculto en desktop) */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--color-text);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+
+/* ─────────────────────────────────────────────
+   6. MAIN — Grid de 1 columna (se expande en desktop)
+───────────────────────────────────────────── */
+main {
+    display: grid;
+    grid-template-columns: 1fr;  /* 1 columna base (mobile first) */
+    gap: var(--gap);
+}
+
+
+/* ─────────────────────────────────────────────
+   7. SECCIONES — Tarjeta estilo glow
+───────────────────────────────────────────── */
+section {
+    background-color: var(--color-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--glow);
+    text-align: center;
+}
+
+section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--color-text);
+}
+
+section p {
+    color: var(--color-muted);
+    line-height: 1.6;
+}
+
+
+/* ─────────────────────────────────────────────
+   8. ARTÍCULOS (pet-cards, product-cards…)
+   Uso: <article class="pet-card">
+───────────────────────────────────────────── */
+.pet-card {
+    background-color: var(--color-card);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--glow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pet-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow-hover);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;      /* recorta sin deformar */
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pet-card h3 {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.pet-card p {
+    color: var(--color-muted);
+    font-size: 1rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   9. GRID DE PROYECTOS
+───────────────────────────────────────────── */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columnas iguales */
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.project-card {
+    background-color: var(--color-dark);
+    border: 2px solid var(--border-color);
+    padding: 1.2rem;
+    border-radius: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--glow);
+}
+
+
+/* ─────────────────────────────────────────────
+   10. FORMULARIO
+───────────────────────────────────────────── */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto;  /* centrado horizontal */
+}
+
+label {
+    align-self: flex-start;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--color-dark);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    resize: vertical;   /* solo textarea: redimensionable vertical */
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: var(--glow);
+}
+
+
+/* ─────────────────────────────────────────────
+   11. BOTONES
+───────────────────────────────────────────── */
+button {
+    padding: 0.7rem 1.4rem;
+    border-radius: 0.8rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    font-weight: bold;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #60a5fa;
+    box-shadow: var(--glow);
+}
+
+
+/* ─────────────────────────────────────────────
+   12. UTILIDADES
+───────────────────────────────────────────── */
+.hidden {
+    display: none;  /* JS: element.classList.toggle('hidden') */
+}
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+
+
+/* ─────────────────────────────────────────────
+   13. FOOTER
+───────────────────────────────────────────── */
+footer {
+    text-align: center;
+    color: var(--color-text);
+    padding: 1.5rem;
+    margin-top: var(--gap);
+}
+
+
+/* ══════════════════════════════════════════════
+   14. MEDIA QUERIES — Responsive Design
+   Estrategia: Mobile First
+   Base → mobile | min-width → tablet | desktop
+══════════════════════════════════════════════ */
+
+/* ── MOBILE (hasta 600px) ── */
+@media (max-width: 600px) {
+
+    /* Header en columna */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Mostrar botón hamburguesa */
+    .hamburger {
+        display: block;
+    }
+
+    /* Ocultar nav por defecto en mobile */
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    /* Cuando JS añade clase .active, el nav aparece */
+    nav.active {
+        display: block;
+    }
+
+    header.active {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Projects: 1 columna */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Pets grid: 2 columnas */
+    .pet-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ── TABLET (601px – 1024px) ── */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    /* Projects: 2 columnas */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Pets grid: 3 columnas */
+    .pet-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ── DESKTOP (1025px+) ── */
+@media (min-width: 1025px) {
+
+    /* Main con 2 columnas lado a lado si se necesita */
+    /* main { grid-template-columns: repeat(2, 1fr); } */
+
+    /* Projects: 3 columnas */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Pets grid: 4 columnas */
+    .pet-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* ══════════════════════════════════════════════
+   REFERENCIA RÁPIDA — PROPIEDADES CLAVE
+   ══════════════════════════════════════════════
+
+   FLEXBOX (elementos en fila/columna):
+   ─────────────────────────────────────
+   display: flex
+   flex-direction: row | column
+   justify-content: flex-start | center | space-between | space-around
+   align-items: stretch | center | flex-start | flex-end
+   gap: 1rem
+   flex-wrap: wrap   ← permite que pasen a siguiente línea
+
+   GRID (cuadrícula):
+   ─────────────────────────────────────
+   display: grid
+   grid-template-columns: repeat(3, 1fr)   ← 3 columnas iguales
+   grid-template-columns: 1fr 2fr 1fr      ← columnas distintas
+   grid-template-rows: auto 1fr auto
+   grid-column: 1 / -1   ← ocupa todas las columnas
+   gap: 1rem
+
+   POSICIONAMIENTO:
+   ─────────────────────────────────────
+   position: relative   ← referencia para hijos absolute
+   position: absolute   ← sale del flujo, relativo al padre
+   position: fixed      ← fijo en pantalla (navbar sticky)
+   top / right / bottom / left: valor
+
+   TRANSICIONES:
+   ─────────────────────────────────────
+   transition: propiedad duración   → transition: all 0.3s
+   transform: scale(1.05)           → agranda suavemente
+   transform: translateY(-5px)      → sube suavemente
+
+══════════════════════════════════════════════ */
